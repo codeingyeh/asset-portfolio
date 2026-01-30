@@ -14,6 +14,7 @@ export const getSymbols = async (
     const { data } = await axios.get(
       `https://finnhub.io/api/v1/search?q=${keyword}&token=${US_Stock_API_KEY}&exchange=US`,
     );
+    console.log(data);
     return {
       data: data.result.map((prev: any) => {
         return { name: prev.description, symbol: prev.symbol };

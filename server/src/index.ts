@@ -2,7 +2,6 @@ import express from "express";
 import dotenv from "dotenv";
 import { router } from "./routes/route.js";
 import cors from "cors";
-import type { Request, Response } from "express";
 
 //http://localhost:3000/api/price?market=US&symbol=NVDA
 //http://localhost:3000/api/symbols?market=US&keyword=NVDA
@@ -18,15 +17,6 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-
-// app.get("/", (req: Request, res: Response) => {
-//   res.send("Hello World!");
-// });
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
-
 app.use("/api", router);
 
 app.listen(port, () => {

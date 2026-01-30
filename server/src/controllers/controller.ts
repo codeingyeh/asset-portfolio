@@ -14,7 +14,7 @@ export const stockController = {
       const symbol = req.query.symbol?.toString().toUpperCase() || "";
       const market = req.query.market?.toString().toUpperCase() || "";
       const data =
-        market === "TW" ? await getTwPrice(symbol) : getUsPrice(symbol);
+        market === "TW" ? await getTwPrice(symbol) : await getUsPrice(symbol);
       res.json(data);
     } catch (error) {
       if (error instanceof Error) {
@@ -28,7 +28,8 @@ export const stockController = {
     try {
       const keyword = req.query.keyword?.toString() || "";
       const market = req.query.market?.toString().toUpperCase() || "";
-      const data = market === "TW" ? await getTwSymbol() : getUsSymbol(keyword);
+      const data =
+        market === "TW" ? await getTwSymbol() : await getUsSymbol(keyword);
       res.json(data);
     } catch (error) {
       if (error instanceof Error) {
